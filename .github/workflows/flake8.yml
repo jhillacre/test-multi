@@ -42,7 +42,6 @@ jobs:
         run: |
           python -m venv "${HOME}/.venv"
           source "${HOME}/.venv/bin/activate"
-          cd ./${GITHUB_REPOSITORY##*/}
           pip install --upgrade pip wheel setuptools
           if [ -f flake8_requirements.txt ]; then
               pip install -r flake8_requirements.txt | cat; test ${PIPESTATUS[0]} -eq 0

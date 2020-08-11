@@ -1,6 +1,7 @@
 import ctypes
 import multiprocessing
 import random
+import sys
 from time import sleep
 
 
@@ -15,7 +16,7 @@ def do_work(x):
     print(_worker_id, 'starting', x)
     sleep(random.uniform(1, 3))
     print(_worker_id, 'ending', x)
-    return x
+    return x, sys.stdin.closed, sys.stdout.closed, sys.stderr.closed
 
 
 if __name__ == '__main__':

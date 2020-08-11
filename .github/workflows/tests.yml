@@ -83,4 +83,4 @@ jobs:
         run: |
           source "${HOME}/.venv/bin/activate"
           coverage combine
-          coverage report
+          coverage report -m
