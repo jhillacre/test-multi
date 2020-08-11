@@ -75,12 +75,12 @@ jobs:
       - name: Run test suite
         id: test-suite
         run: |
-          cd ./${{ needs.startup.outputs.repoName }}
           source "${HOME}/.venv/bin/activate"
           export COVERAGE_PROCESS_START=.coveragerc
           echo "import coverage; coverage.process_startup()" > `python -c "import sys; print([x for x in sys.path if x.find('${HOME}/.venv') != -1 and x.find('site-packages') != -1][0] + '/coverage-all-the-things.pth')"`
           coverage run -p main.py
       - name: Show coverage
         run: |
+          source "${HOME}/.venv/bin/activate"
           coverage combine
           coverage report

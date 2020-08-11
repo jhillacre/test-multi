@@ -33,7 +33,7 @@ jobs:
         if: always()
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
-          key: ${{ runner.os }}-${{ env.python-version }}-pip-tests-${{ hashFiles('./requirements.txt') }}
+          key: ${{ runner.os }}-${{ env.python-version }}-pip-tests-${{ hashFiles('./flake8_requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-${{ env.python-version }}-pip-tests
             ${{ runner.os }}-${{ env.python-version }}-pip
@@ -53,6 +53,5 @@ jobs:
         env:
           $FLAKE8_WARNINGS: ${{ secrets.FLAKE8_WARNINGS }}
         run: |
-          cd ./${GITHUB_REPOSITORY##*/}
           source "${HOME}/.venv/bin/activate"
           flake8
